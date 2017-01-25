@@ -15,6 +15,9 @@ if (req.url === '/'){
     age : 40
   };
   res.end(JSON.stringify(jsonObj));
+} else {
+  res.writeHead(404,{'Content-Type': 'text/html'});
+  fs.createReadStream('404.html').pipe(res);
 }
 }).listen(3000);
 
