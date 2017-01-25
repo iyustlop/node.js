@@ -6,7 +6,7 @@ http.createServer(function(req,res){
 console.log('requested url : ' + req.url);
 if (req.url === '/'){
   res.writeHead(200,{'Content-Type': 'text/html'});
-  fs.createReadStream('index.html').pipe(res);
+  fs.createReadStream('html/index.html').pipe(res);
 } else if (req.url === '/api'){
   res.writeHead(200,{'Content-Type': 'application/json'});
   var jsonObj = {
@@ -17,7 +17,7 @@ if (req.url === '/'){
   res.end(JSON.stringify(jsonObj));
 } else {
   res.writeHead(404,{'Content-Type': 'text/html'});
-  fs.createReadStream('404.html').pipe(res);
+  fs.createReadStream('html/404.html').pipe(res);
 }
 }).listen(3000);
 
