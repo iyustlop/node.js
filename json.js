@@ -2,22 +2,22 @@ var fs = require('fs');
 var http = require('http');
 
 
-http.createServer(function(req,res){
-console.log('requested url : ' + req.url);
-if (req.url === '/'){
-  res.writeHead(200,{'Content-Type': 'text/html'});
-  fs.createReadStream('html/index.html').pipe(res);
-} else if (req.url === '/api'){
-  res.writeHead(200,{'Content-Type': 'application/json'});
-  var jsonObj = {
-    name : 'ignacio',
-    surname : 'yuste',
-    age : 40
+http.createServer(function(request,response){
+  console.log('requested url : ' + request.url);
+  if (request.url === '/'){
+    response.writeHead(200,{'Content-Type': 'text/html'});
+    fs.createReadStream('html/index.html').pipe(response);
+  } else if (request.url === '/api'){
+    response.writeHead(200,{'Content-Type': 'application/json'});
+    var jsonObj = {
+      name : 'ignacio',
+      surname : 'yuste',
+      age : 40
   };
-  res.end(JSON.stringify(jsonObj));
+  response.end(JSON.stringify(jsonObj));
 } else {
-  res.writeHead(404,{'Content-Type': 'text/html'});
-  fs.createReadStream('html/404.html').pipe(res);
+  response.writeHead(404,{'Content-Type': 'text/html'});
+  fs.createReadStream('html/404.html').pipe(response);
 }
 }).listen(3000);
 
