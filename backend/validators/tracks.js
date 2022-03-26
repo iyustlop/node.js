@@ -35,7 +35,7 @@ const validatorCreateItem = [
     check("mediaId")
         .exists()
         .notEmpty()
-        .isMongoId,
+        .isMongoId(),
     (req, res, next) => {
         console.log("Validate tracks")
         return validateResults(req, res, next)
