@@ -7,7 +7,6 @@ const validatorGetItem = [
         .notEmpty()
         .isMongoId(),
     (req, res, next) => {
-        console.log("Validate tracks")
         return validateResults(req, res, next)
     }
 ];

@@ -19,7 +19,6 @@ const validatorRegisterItem = [
         .notEmpty()
         .isEmail(),
     (req, res, next) => {
-        console.log("Validate tracks")
         return validateResults(req, res, next)
     }
 ];
@@ -34,7 +33,6 @@ const validatorLogin = [
         .notEmpty()
         .isEmail(),
     (req, res, next) => {
-        console.log("Validate tracks")
         return validateResults(req, res, next)
     }
 ]
